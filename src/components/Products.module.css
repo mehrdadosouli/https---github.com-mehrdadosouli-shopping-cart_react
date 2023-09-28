@@ -1,0 +1,17 @@
+.header{
+    display: flex;
+    direction: rtl;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgba(143, 145, 146, 0.486);
+    box-shadow: 0 0 5px 1px rgba(143, 145, 146, 0.438);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+.allproducts{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
