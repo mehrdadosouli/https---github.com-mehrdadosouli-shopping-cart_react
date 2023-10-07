@@ -9,6 +9,18 @@
     box-shadow: 0 0 4px 1px rgba(139, 139, 139, 0.295);
     border-radius: 0.5rem;
 }
+.containerBasket{
+    display: flex;
+    justify-self: end;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 220px;
+    height: 300px;
+    padding: 0.5rem;
+    box-shadow: 0 0 4px 1px rgba(139, 139, 139, 0.295);
+    border-radius: 0.5rem;
+}
 .btn{
     display: flex;
     justify-content: space-between;
@@ -23,7 +35,7 @@
 .btn:hover{
     cursor: pointer;
 }
-.price{
+.body{
     color: rgba(255, 68, 0, 0.808);
 }
 .container>.img{

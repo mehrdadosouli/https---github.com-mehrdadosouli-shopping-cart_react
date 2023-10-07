@@ -12,6 +12,13 @@
 .allproducts{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    padding:0 6rem;
     gap: 2rem;
+}
+.baskets{
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+    padding:0 6rem;
 }
