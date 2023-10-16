@@ -1,0 +1,88 @@
+.container{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:linear-gradient(rgb(103,124,69),rgb(13,23,12));
+}
+.form{
+    width: 300px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    background-color: rgba(191, 204, 192, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding:4rem 1.5rem 2.5rem 1.5rem;
+    backdrop-filter: blur(22px);
+}
+.form input{
+    width: 88%;
+    height: 35px;
+}
+.form input::before{
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 50px;
+    background-image: url();
+}
+.form input[type=checkbox]{
+    width: 12px;
+    height: 12px;
+}
+.form label{
+    color: rgb(231, 231, 231);
+}
+.form input[type=text]::placeholder,.form input[type=password]::placeholder{
+    padding-left: 1rem;
+}
+.form input[type=text],.form input[type=password]{
+    padding-left: 2rem;
+}
+.form input[type=submit]{
+    width: 100%;
+    background-color: rgb(32,45,17);
+    outline: none;
+    border: none;
+    color: white;
+}
+.form input[type=submit]:hover{
+    cursor: pointer;
+}
+.check{
+    display: flex;
+}
+.svg{
+    position: relative;
+}
+.userIcon{
+    position: absolute;
+    left: 5%;
+    top: 25%;
+    bottom: 0%;
+    margin: auto 0;
+}
+.passwordIcon{
+    position: absolute;
+    left: 5%;
+    top: 25%;
+    bottom: 0%;
+    margin: auto 0;
+}
+.logo{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: -20%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: rgb(32,45,17);
+    
+}
+.error{
+    padding: 0.2rem 0;
+    color: rgba(145, 6, 6, 0.705);
+}
