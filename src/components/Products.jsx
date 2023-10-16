@@ -4,6 +4,7 @@ import Product from "./Product";
 import icon from "../icon/icons8-basket-96.png";
 import axios from "axios";
 import BasketProducts from "./BasketProducts";
+import { Link } from "react-router-dom";
 export default class Products extends Component {
   constructor() {
     super();
@@ -78,7 +79,10 @@ export default class Products extends Component {
         <div className={styled.container}>
           <div className={styled.header}>
             <h1>Shopping Card</h1>
-            <img src={icon} alt="" onClick={this.basketHandler} />
+            <div style={{display:"flex",alignItems:'center'}}>
+              <img src={icon} alt="" onClick={this.basketHandler} />
+              <span><Link to='/login'>Login</Link></span>
+            </div>
           </div>
           {
             !this.state.showbasket ? 

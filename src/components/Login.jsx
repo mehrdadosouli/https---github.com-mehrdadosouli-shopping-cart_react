@@ -32,7 +32,8 @@ export default function Login() {
             checked:true,
         });
         if(!Object.keys(swallprops).length){
-            toast('you login successfuly')
+            toast('you login successfuly');
+            console.log(window.location.pathname='/products');
         }else{
             toast('please checkd inputs')
         }
