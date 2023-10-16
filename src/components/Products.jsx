@@ -9,7 +9,7 @@ export default class Products extends Component {
   constructor() {
     super();
     this.state = {
-      productGetData: [{id: 1, title: 'DANVOUY Womens T Shirt Casual Cotton Short', count:0},{id: 2, title: 'DANVOUY Womens T Shirt Casual Cotton Short', count:0}],
+      productGetData: [],
       basket: [],
       showbasket:false,
     };
@@ -32,6 +32,7 @@ export default class Products extends Component {
 
 
     Addtocard = (thiss, newCount) => {
+      
       this.setState(prevState => {
         const updatedProductGetData = prevState.productGetData.map(item => {
           if (item.id === thiss.id) {
@@ -42,6 +43,7 @@ export default class Products extends Component {
     
         return { productGetData: updatedProductGetData };
       });
+      
     };
   
   // dele=(id)=>{
