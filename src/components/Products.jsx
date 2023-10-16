@@ -9,69 +9,49 @@ export default class Products extends Component {
   constructor() {
     super();
     this.state = {
-      productGetData: [],
+      productGetData: [{id: 1, title: 'DANVOUY Womens T Shirt Casual Cotton Short', count:0},{id: 2, title: 'DANVOUY Womens T Shirt Casual Cotton Short', count:0}],
       basket: [],
       showbasket:false,
     };
   }
 
   componentDidMount = () => {
-    axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
-      this.setState({ productGetData: response.data.slice(0,5) });
-    });
-  };
-
+   axios.get("https://fakestoreapi.com/products")
+    .then((response) => {
+      response.data.map(item=>{
+        item.count=0  
+      })
+     this.setState({
+      productGetData:response.data.slice(0,5)
+   })
+  })
+  }
   basketHandler = () => {
     this.setState(prev=>({showbasket:!prev.showbasket}))
-    
   };
 
-  Addtocard=(id,event)=>{
 
-    if(!this.state.basket.length){
-          const result=this.state.productGetData.filter(item=>{
-            return item.id==id
-          })
-          this.setState(prev=>({
-            basket:[...prev.basket,...result]
-          }))
-      }else{
-      const res= this.state.basket.some(itemBasket=>{
-
-        if(itemBasket.id !== id){
-         return true
-         }
-          return false
-         
-        //else if(itemBasket.id == id){
-          
-        //   this.setState(prev=>({
-        //     basket:[...prev.basket],counter:2
-        //   }))
-        //   console.log(this.state.basket);
-        // }
-      })     
-      console.log(res);
-      if(res){
-        const result=this.state.productGetData.filter(item=>{
-          return item.id == id
-        })
-        this.setState(prev=>({
-          basket:[...prev.basket,...result]
-        }))
-      } else{
-        console.log('hiiiii');
-      }
-    }
-  }
-  dele=(id)=>{
-   const result= this.state.basket.filter(item=>{
-      return item.id !== id
-    })
-    this.setState({
-      basket:result
-    })
-  }
+    Addtocard = (thiss, newCount) => {
+      this.setState(prevState => {
+        const updatedProductGetData = prevState.productGetData.map(item => {
+          if (item.id === thiss.id) {
+            return {...item,count:newCount};
+          }
+          return item;
+        });
+    
+        return { productGetData: updatedProductGetData };
+      });
+    };
+  
+  // dele=(id)=>{
+  //  const result= this.state.basket.filter(item=>{
+  //     return item.id !== id
+  //   })
+  //   this.setState({
+  //     basket:result
+  //   })
+  // }
 
   render() {
     return (
@@ -84,18 +64,18 @@ export default class Products extends Component {
               <span><Link to='/login'>Login</Link></span>
             </div>
           </div>
-          {
-            !this.state.showbasket ? 
+          
+            
           <div className={styled.allproducts}>
             {this.state.productGetData.map((item) => {
               return <Product key={item.id} {...item} func={this.Addtocard} />;
             })}
           </div>
-          :
-          <div className={styled.baskets}>
+
+           {/* <div className={styled.baskets}>
             <BasketProducts funcs={this.dele} name={this.state.basket} />  
-          </div>
-          }   
+           </div> */}
+          
 
         </div>
       </>

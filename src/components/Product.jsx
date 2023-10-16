@@ -1,25 +1,33 @@
 import React, { Component } from 'react'
 import styles from "./Product.module.css"
-// import icon from "../icon/icons8-basket-48.png"
+import { Link } from 'react-router-dom';
 export default class Product extends Component {
-
-  clickHandler(id){
-    this.props.func(id)
+  constructor(){
+    super();
+    
+  }
+  addtoocardHandler=(e)=>{
+      this.props.func(this.props,1)
+      
   }
   render() {
-    const {title,price,image,id}=this.props
+    const {title,image,id,count}=this.props;
     return (
       <>
         <div className={styles.container}>
             <div className={styles.img}> 
                  <img src={image} alt="" /> 
             </div>
-            <span className={styles.name}>{title.slice(0,15)}</span>
-            {/* <span className={styles.price}>{price} $</span> */}
-            <button id={id} className={styles.btn} onClick={this.clickHandler.bind(this,id)}>
-                {/* <img src={icon} alt="" /> */}
-                <span>Add to card</span>
-            </button>
+            <span className={styles.name}>{title.slice(0,15)}</span>    
+            {!count ? <span id={id} className={styles.btn} onClick={this.addtoocardHandler}>Add to card</span> : 
+             <div className={styles.addbtn}> 
+              <div><Link to="/product/detail/:id">Detail</Link></div>
+              <div className={styles.btns}>
+                <button>Delete</button>
+                <button>+</button>
+              </div>
+             </div>
+            }
         </div>
       </>
     )
