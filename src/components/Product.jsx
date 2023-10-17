@@ -15,9 +15,7 @@ componentDidMount=()=>{
 }
 
 addtoocardHandler=(e)=>{
-  this.props.func(this.props,1)  
-  
-  console.log(this.state);  
+  this.props.func(this.props)  
 }
 
   // upperHandler=()=>{
