@@ -1,48 +1,35 @@
-import React, { Component } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from "./Product.module.css"
 import { Link } from 'react-router-dom';
-export default class Product extends Component {
-  constructor(){
-    super();
-    this.state={
-      sabadkala:[]
-    }
-  }
-componentDidMount=()=>{
-  this.setState(prev=>({
-    ...prev,sabadkala:this.props
-  }))
-}
+import {cardContext} from "../context/CardContextProvider"
+import { isInCard } from '../helper/function.js';
 
-addtoocardHandler=(e)=>{
-  this.props.func(this.props)  
-}
+export default function Product(props) {
 
-  // upperHandler=()=>{
-
-  // }
-  render() {
-    const {title,image,id,count}=this.props;
-    return (
-      <>
-        <div className={styles.container}>
-            <div className={styles.img}> 
-                 <img src={image} alt="" /> 
-            </div>
-            <span className={styles.name}>{title.slice(0,15)}</span>    
-            {!count ? 
-            <span id={id} className={styles.btn} onClick={this.addtoocardHandler}>Add to card</span>
-             : 
-             <div className={styles.addbtn}> 
-              <div><Link to={`/products/detail/${id}`}>Detail</Link></div>
-              <div className={styles.btns}>
-                <button>Delete</button>
-                <button >+</button>
-              </div>
-             </div>
-            }
+  const {state,dispatch}=useContext(cardContext)
+  const {image,title,id}=props
+  console.log(state.selectedItem)
+  return (
+    <>
+    <div className={styles.container}>
+        <div className={styles.img}> 
+             <img src={image} alt="" /> 
         </div>
-      </>
-    )
-  }
+        <span className={styles.name}>{title.slice(0,15)}</span>    
+          <div><Link to={`/products/detail/${id}`}>Detail</Link></div>
+          {
+              !isInCard(state,id) ? <span id={id} className={styles.btn} onClick={()=>dispatch({type:'ADD_ITEM',payload:props})}>Add to card</span> : 
+          <div className={styles.addbtn}> 
+            <div className={styles.btns}>
+              <button onClick={()=>dispatch({type:'INCREASE',payload:props})}>+</button>
+            
+              {!state.selectedItem.quantity > 1 && <button onClick={()=>dispatch({type:'DECREASE',payload:props})}>-</button>}
+              {!state.selectedItem.quantity > 0 && <button onClick={()=>dispatch({type:'DELETE_ITEM',payload:props})}>Delete</button>}
+   
+            </div>
+           </div>
+      }
+    </div>
+  </>
+  )
 }

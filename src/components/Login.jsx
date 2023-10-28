@@ -25,23 +25,26 @@ export default function Login() {
         setInputs({...inputsval,[e.target.type]:e.target.value})
        }
     }
+
+    useEffect(()=>{
+        setSwall(validation(inputsval))
+    },[inputsval])
+
     const submitHandler=()=>{
         setFocus({
             names:true,
             emails:true,
             checked:true,
         });
+
         if(!Object.keys(swallprops).length){
             toast('you login successfuly');
-            console.log(window.location.pathname='/products');
+            window.location.href='/products'
         }else{
             toast('please checkd inputs')
         }
     }
-    useEffect(()=>{
-        setSwall(validation(inputsval))
-    },[inputsval])
-
+    
     const focusHandler=(e)=>{
         setFocus({
             ...focus,[e.target.name]:true

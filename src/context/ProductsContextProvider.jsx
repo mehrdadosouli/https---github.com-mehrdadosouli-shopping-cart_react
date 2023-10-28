@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,createContext} from "react";
 import { apiurl } from "../helper/apiurl.js";
 
-export const AllproductsContext = React.createContext();
+export const AllproductsContext = createContext();
 
 const ProductsContextProvider = ({ children }) => {
   const [data, setData] = useState([]);
@@ -9,8 +9,7 @@ const ProductsContextProvider = ({ children }) => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const products = await apiurl();
-        setData(products);
+        setData(await apiurl());
       } catch (error) {
         console.log(error);
       }
