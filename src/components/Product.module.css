@@ -62,13 +62,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
+    width: 100%;
+}
+.addbtn>div{
+    display: flex;
+    justify-content: space-between;
 }
 .addbtn>div:first-child{
-    padding: 0.5rem;
+    padding: 0.2rem;
     border: none;
     border-radius: 7px;
     background-color: orange;
+    width: 100%;
+}
+.addbtn>div>button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 1.7rem;
 }
 .addbtn>div:first-child a{
     text-decoration: none;
