@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import styles from "./Product.module.css"
 import { Link } from 'react-router-dom';
 import {cardContext} from "../context/CardContextProvider"
@@ -7,7 +7,7 @@ import { isInCard } from '../helper/function.js';
 export default function Product(props) {
 
   const {state,dispatch}=useContext(cardContext)
-  const {image,title,id}=props
+  const {image,title,id}=props;
   return (
     <>
     <div className={styles.container}>
@@ -18,7 +18,6 @@ export default function Product(props) {
           <div><Link to={`/products/detail/${id}`}>Detail</Link></div>
           {
             !isInCard(state,id) ? 
-
             <span id={id} className={styles.btn} onClick={()=>dispatch({type:'ADD_ITEM',payload:props})}>Add to card</span>  : 
             <div className={styles.addbtn}> 
               <div className={styles.btns}>

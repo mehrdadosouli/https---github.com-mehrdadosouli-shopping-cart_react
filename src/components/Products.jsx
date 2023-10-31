@@ -15,7 +15,7 @@ const usecontextproduct=useContext(AllproductsContext)
       <div className={styles.header}>
         <h1>Shopping Card</h1>
         <div style={{display:"flex",alignItems:'center'}}>
-          <img src={icon} alt="" />
+         <Link to='/basket'><img src={icon} alt="" /></Link> 
           <span><Link to='/login'>Login</Link></span>
         </div>
       </div>

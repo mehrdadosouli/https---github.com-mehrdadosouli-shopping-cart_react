@@ -1,0 +1,42 @@
+.containerBasket{
+    display: flex;
+    gap: 2rem;
+}
+.img>img{
+    width: 10rem;
+}
+.right{
+    width: 100%;
+    box-shadow: 0 0 2px 1px rgba(128, 128, 128, 0.356);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+
+}
+.right_info{
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    line-height: 1.8;
+}
+.right .name{
+    font-weight: 600;
+}
+
+.right .description{
+    color: rgba(128, 128, 128, 0.582);
+}
+/* left product */
+.lefts{
+    box-shadow: 0 0 2px 1px rgba(128, 128, 128, 0.356);
+    width: 40%;
+    height: 85vh;
+    padding: 2rem;
+    display: flex;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+    position: sticky;
+    top: 0;
+}

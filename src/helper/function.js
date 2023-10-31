@@ -5,8 +5,7 @@ const isInCard=(state,id)=>{
    }else{
     return res
    }
-    
-    
 }
+
 
 export {isInCard}

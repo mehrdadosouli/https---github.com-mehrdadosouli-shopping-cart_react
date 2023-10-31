@@ -5,16 +5,10 @@ export const AllproductsContext = createContext();
 
 const ProductsContextProvider = ({ children }) => {
   const [data, setData] = useState([]);
-
   useEffect(() => {
     const getProducts = async () => {
-      try {
         setData(await apiurl());
-      } catch (error) {
-        console.log(error);
-      }
     };
-
     getProducts();
   }, []);
 

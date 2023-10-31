@@ -5,7 +5,6 @@ const apiurl=async()=>{
     .then(res=>{
         return res.data
     })
-
     return response
 }
 export {apiurl}

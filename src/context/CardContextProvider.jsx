@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from 'react'
-
+export const cardContext=createContext()
 const initialState={
     selectedItem:[],
     total:0,
@@ -12,7 +12,7 @@ const productReducer=(state,action) => {
             if(!state.selectedItem.find(item=>item.id === action.payload.id )){
                 state.selectedItem.push({
                     ...action.payload,
-                    quantity:1
+                    quantity:1,
                 })
             }
             return {
@@ -52,7 +52,7 @@ const productReducer=(state,action) => {
             
     }
 }
-export const cardContext=createContext()
+
 const CardContextProvider =({children})=> {
     const [state,dispatch]=useReducer(productReducer,initialState)
   return (
