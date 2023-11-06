@@ -6,6 +6,7 @@ const initialState={
     checkout:false,
     countItem:0
 }
+
 const productReducer=(state,action) => {
     switch (action.type) {
         case "ADD_ITEM":
@@ -13,17 +14,19 @@ const productReducer=(state,action) => {
                 state.selectedItem.push({
                     ...action.payload,
                     quantity:1,
+                    checkout:false
                 })
             }
             return {
                 ...state,
-                selectedItem:[...state.selectedItem]
+                selectedItem:state.selectedItem,
+                checkout:false
             }
             case "DELETE_ITEM" :
                 const result= state.selectedItem.filter(item=>item.id !== action.payload.id)
             return {
                     ...state,
-                    selectedItem:[...result]
+                    selectedItem:[...result],
             }
             case "INCREASE" :
                     const indexI=state.selectedItem.findIndex(index=>index.id == action.payload.id);
@@ -31,9 +34,15 @@ const productReducer=(state,action) => {
             return {...state}
             case "DECREASE" :
                 const indexD=state.selectedItem.findIndex(index=>index.id == action.payload.id);
-                state.selectedItem[indexD].quantity--;
+                if(state.selectedItem[indexD].quantity > 0){
+                    state.selectedItem[indexD].quantity--;
+                }
+                
             return {...state}
             case "CHECKOUT" :
+                if(state.checkout){
+                    alert('checkout is successfully')
+                }
             return {
                 selectedItem:[],
                 total:0,

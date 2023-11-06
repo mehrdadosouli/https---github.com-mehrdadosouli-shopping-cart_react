@@ -8,6 +8,7 @@ export default function Product(props) {
 
   const {state,dispatch}=useContext(cardContext)
   const {image,title,id}=props;
+
   return (
     <>
     <div className={styles.container}>
@@ -24,6 +25,7 @@ export default function Product(props) {
                 {
                   isInCard(state,id).quantity > 1 ? <button onClick={()=>dispatch({type:'DECREASE',payload:props})}>-</button> : <button onClick={()=>dispatch({type:'DELETE_ITEM',payload:props})}>Delete</button>
                 }
+                <span>{isInCard(state,id).quantity}</span>
                 <button onClick={()=>dispatch({type:'INCREASE',payload:props})}>+</button>
               </div>
              </div>
